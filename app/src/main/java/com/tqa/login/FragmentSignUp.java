@@ -32,7 +32,6 @@ public class FragmentSignUp extends Fragment {
                 sendDataToActivity();
             }
         });
-
         return view;
     }
 
