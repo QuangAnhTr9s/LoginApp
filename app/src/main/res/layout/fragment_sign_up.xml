@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_minion_below"
+    android:orientation="vertical"
+    tools:context=".FragmentSignUp">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_dang_nhap_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ho_va_ten"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edt_ho_ten_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:autofillHints="no"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tai_khoan"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edt_tai_khoan_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:autofillHints="no"
+                android:contentDescription="@string/nhap_tai_khoan_cua_ban"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/nhap_mat_khau_cua_ban"
+                android:text="@string/mat_khau"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edt_mat_khau_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:autofillHints="no"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:backgroundTint="#FFC107"
+        android:textSize="25sp"
+        android:id="@+id/btn_xac_nhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:text="@string/xac_nhan"
+        android:textAllCaps="false" />
+
+</LinearLayout>

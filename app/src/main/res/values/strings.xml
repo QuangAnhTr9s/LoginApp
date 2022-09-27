@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Login</string>
+    <string name="tai_khoan">Tài khoản:</string>
+    <string name="mat_khau">Mật khẩu:</string>
+    <string name="quen_mat_khau">Quên mật khẩu</string>
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="dang_ky">Đăng ký</string>
+    <string name="nhap_tai_khoan_cua_ban">Nhập tài khoản của bạn</string>
+    <string name="nhap_mat_khau_cua_ban">Nhập mật khẩu của bạn</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ho_va_ten">Họ và tên:</string>
+    <string name="xac_nhan">Xác Nhận</string>
+    <string name="hello">Hello!</string>
+    <string name="ban_nhap_sai_tai_khoan_hoac_mat_khau">Bạn đã nhập sai tài khoản hoặc mật khẩu!</string>
+</resources>
