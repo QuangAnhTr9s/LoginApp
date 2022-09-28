@@ -3,7 +3,6 @@ package com.tqa.login;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -35,16 +34,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setWiget();
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
+        //lay du lieu tu sharedPreferences ra list
+        String stringListUser = sharedPreferences.getString("list_obj", null); //lay gia tri ra, neu k co thi gan la null
+        Gson gson = new Gson();
+        if (stringListUser != null) {
+            Type type = new TypeToken<List<User>>() {
+            }.getType();
+            listUser = gson.fromJson(stringListUser, type);
+        }
         receiveAndSaveDataFromFragmentSignUp();
-
-        checkTaiKhoan = edt_tai_khoan.getText().toString().trim();
-        checkMatKhau = edt_mat_khau.getText().toString().trim();
 
         btn_dang_ky.setOnClickListener(v -> dangKyTaiKhoan());
         btn_dang_nhap.setOnClickListener(v -> dangNhap());
     }
 
-    @SuppressLint("SetTextI18n")
     private void dangNhap() {
         checkTaiKhoan = edt_tai_khoan.getText().toString().trim();
         checkMatKhau = edt_mat_khau.getText().toString().trim();
@@ -72,41 +75,26 @@ public class MainActivity extends AppCompatActivity {
         //nhan du lieu tu fragmentSignUp
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data_bundle");
-        //lay du lieu tu sharedPreferences ra list
-        String stringListUser = sharedPreferences.getString("list_obj", null); //lay gia tri ra, neu k co thi gan la null
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<User>>() {
-        }.getType();
-        listUser = gson.fromJson(stringListUser, type);
+
         if (bundle != null) {
             User user = (User) bundle.getSerializable("data_user");
-            //luu mot doi tuong vao sharedPreferences
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            Gson gson = new Gson();
-//            String json = gson.toJson(user);
-//            editor.putString("user_obj", json);
-//            editor.commit();
-
-            //luu mot list doi tuong vao sharedPreferences
-            //kiem tra xem list user co user nao chua, ko co thi add user moi vao
-            //co roi thi phai lay list ra roi moi add user
-            if (stringListUser == null) {
-                listUser.add(user);
+            if (checkUser(user.getmTaiKhoan())) {
+                Toast.makeText(this, "Tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
             } else {
-                if (checkUser(user.getmTaiKhoan())) {
-//                if (listUser.checkUser(user.getmTaiKhoan())) {
-                    Toast.makeText(this, "Tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
-                } else {
-                    listUser.add(user);
-                }
+                listUser.add(user);
             }
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            String json = gson.toJson(listUser);
-            editor.putString("list_obj", json);
-            editor.apply();
-//            editor.clear().commit();
         }
+
+        //luu list vao sharedPreferences
+        Gson gson = new Gson();
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String json = gson.toJson(listUser);
+        editor.putString("list_obj", json);
+        editor.apply();
+//            editor.clear().commit();
     }
+
 
     private boolean checkUser(String getmTaiKhoan) {
         for (User userCheck : listUser) {
