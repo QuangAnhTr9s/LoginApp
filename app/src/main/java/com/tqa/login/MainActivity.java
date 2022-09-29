@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     private void receiveAndSaveDataFromFragmentSignUp() {
         //nhan du lieu tu fragmentSignUp
         Intent intent = getIntent();
